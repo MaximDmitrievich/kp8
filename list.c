@@ -90,8 +90,8 @@ void list_insert(Iterator *iterator, double a, double b)
 	iterator->list->nodes = (Node *) realloc(iterator->list->nodes, sizeof(Node) * ++iterator->elements);
 	iterator->index = iterator->elements - 1;
 	iterator->list->nodes[iterator->index].next = 0;
-	iterator->list->nodes[iterator->index].prev = iterator_prev_index(&iterator);
-	iterator->list->nodes[iterator_prev_index(&iterator)].next = iterator->index;
+	iterator->list->nodes[iterator->index].prev = iterator->elements - 1;
+	iterator->list->nodes[iterator->elements - 1].next = iterator->index;
 	iterator->list->nodes[iterator->list->center].prev = iterator->index;
 	iterator->list->nodes[iterator->index].a = a;
 	iterator->list->nodes[iterator->index].b = b;
